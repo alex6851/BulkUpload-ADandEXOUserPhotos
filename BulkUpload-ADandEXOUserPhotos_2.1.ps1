@@ -308,13 +308,6 @@ function Set-XUserPhoto {
 
 
     
-#This section is where you define where your Sharepoint location is that holds the badge photos
-$SharePointDrive = Get-PSDrive | Where-Object { $_.Root -match "Badge Photos" }
-
-#This is where yo you create a PSDrive with the Sharepoint Location
-if (!$SharePointDrive) {
-	New-PSDrive -Name "Z" -Root "\\sp.SharePointSite.com@SSL\DavWWWRoot\sites\Badge Photos\" -PSProvider FileSystem -Scope Global
-}
 
 
 
@@ -357,6 +350,13 @@ function Get-PicturesInUpdate {
 }
 
 
+#This section is where you define where your Sharepoint location is that holds the badge photos
+$SharePointDrive = Get-PSDrive | Where-Object { $_.Root -match "Badge Photos" }
+
+#This is where yo you create a PSDrive with the Sharepoint Location
+if (!$SharePointDrive) {
+	New-PSDrive -Name "Z" -Root "\\sp.SharePointSite.com@SSL\DavWWWRoot\sites\Badge Photos\" -PSProvider FileSystem -Scope Global
+}
 
 
 
